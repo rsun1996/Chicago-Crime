@@ -1,1 +1,1 @@
-This folder is for outputing data
+This folder is for saving any output for the project
