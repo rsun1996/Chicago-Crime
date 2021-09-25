@@ -6,3 +6,5 @@ output <- paste(mydir,"/Output",sep = "")
 ### Read Chiacago crimes csv
 Chicago_crimes <- read.csv(paste(datadir,"/Crimes_-_2001_to_Present.csv",sep = ""))
 
+### head Chicago_crimes
+head(Chicago_crimes)
