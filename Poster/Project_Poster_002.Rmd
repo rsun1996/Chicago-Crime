@@ -1,0 +1,84 @@
+---
+title: Relationship between baseball sporting events and crime activity in southern Chicago
+author:
+  - name: Parker Franzen
+  
+  - name: Renhao Sun
+   
+  - name: Luis Treviño
+   
+   
+affiliation:
+  - num: 1
+    address: Department of Management Science and Statistics, University of Texas, San Antonio
+  - num: 2
+    address: Statistical Learning, Dr. Keying Ye
+column_numbers: 3
+
+output: 
+  posterdown::posterdown_html:
+    self_contained: false
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction
+
+The city of Chicago keeps an extensive public record of all reported incidents of crime from 2001 to the present,$^2$  updated every seven days.At the time of analysis for this project this data set contained a total of approximately 7.42 million rows (each row is an incident of a reported crime) and 22 columns. The main interest of this project was to analyze this crime data set along with the incidence of baseball sporting events in the corresponding community areas of Chicago in an effort to see whether a relationship existed among the variables. We specifically looked at the major league baseball team the Chicago White Sox by using their public records of baseball home games from 2001 to the present.$^1$ The Chicago White Sox stadium is located in Guaranteed Rate Field, which is right on the dividing line of community areas 34 (Armour Square) and 60 (Bridgeport). This project focused on the crimes that occurred in these community areas in particular in an effort to see whether or not “game days” (that is, days where there was a formal baseball game in the stadium with a live attendance) had a significant impact on the frequency of reported incidents of crime in those areas. R was used for data manipulation, including removing unnecessary rows and variables, creating new variables to use as predictors in the analysis, merging data on crimes and games into one data set, and more. Web scrapping techniques with R were used in acquiring the data on the dates and times of Chicago White Sox home games.
+
+
+# Data Structure
+
+This package uses the same workflow approach as the R Markdown you know and love. Basically it goes from RMarkdown > Knitr > Markdown > Pandoc > HTML/CSS > PDF. You can even use the bibliography the same way [@R-posterdown].
+
+# Methods
+
+•	Crimes data set data manipulation
+
+•	Games data set web scraping
+
+•	Regression analysis model description
+
+
+
+Or with figures: Figure \@ref(fig:standard-plot), or Figure \@ref(fig:morefigs).
+
+```{r standard-plot, out.width='80%', fig.align='center', fig.cap='Great figure!', fig.height=5}
+plot(mtcars[1:2])
+```
+
+```{r morefigs, out.width='80%', echo=TRUE, fig.cap='Amazing, right?!', fig.height=5}
+data <- iris
+
+plot(x = data$Sepal.Length, 
+     y = data$Sepal.Width, 
+     col = data$Species,
+     pch = 19, 
+     xlab = "Sepal Length (cm)",
+     ylab = "Sepal Width (cm)")
+
+```
+
+# Results
+
+Aliquam sed faucibus risus, quis efficitur erat. Vestibulum semper mauris quis tempus eleifend. Aliquam sagittis dictum ipsum, quis viverra ligula eleifend ut. Curabitur sagittis vitae arcu eget faucibus. In non elementum felis. Duis et aliquam nunc. Nunc pulvinar sapien nunc, vel pretium nisi efficitur in. Fusce fringilla maximus leo et maximus. Fusce at ligula laoreet, iaculis mi at, auctor odio. Praesent sed elementum justo. Aenean consectetur risus rhoncus tincidunt efficitur. Praesent dictum mauris at diam maximus maximus [@R-posterdown].
+
+# Conclusion
+
+Try `posterdown` out! Hopefully you like it!
+
+```{r, include=FALSE}
+knitr::write_bib(c('knitr','rmarkdown','posterdown','pagedown'), 'packages.bib')
+```
+
+# References
+
+1. Baseball Reference. "Chicago White Sox Team History & Encyclopedia". (2021, September 27). Retrieved from https://www.baseball-reference.com/teams/CHW/
+
+2. City of Chicago. "Crimes - 2001 to Present". (2021, October 13). Retrieved from https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-Present/ijzp-q8t2
+
+
+
