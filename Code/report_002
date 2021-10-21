@@ -1,0 +1,131 @@
+---
+title: Spatial-Time Baseball Sporting Events Effect on Number of Crimes in Chicago’s South Side
+author:
+- name: Parker Franzen
+  num: a,b
+- name:  Renhao Sun
+  num: b
+- name: Luis Treviño
+  num: c
+address:
+- num: a
+  org: Department of Incredible Research, University A, City A, Country A
+- num: b
+  org: Department of Applied Things, University B, City B, Country B
+- num: c
+  org: Very Important Stuff Committee, Institute C, City C, Country C
+corres: "*Corresponding author name, This is sample corresponding address. \\email{authorone@gmail.com}"
+presentaddress: This is sample for present address text this is sample for present address text
+authormark: Uthor \emph{et al}.
+articletype: Research article
+received: 2017-01-01
+revised: 2017-02-01
+accepted: 2017-03-01
+abstract: "The city of Chicago keeps a public record of all reported incidents of crime from 2001 to the present$^2$. At the time this project was completed this data set contained approximately 7.42 million rows (where each row is an incident of a reported crime) and 22 columns. The main interest of this project was to analyze this crime data set along with the incidence of baseball sporting events in the corresponding community areas of Chicago in an effort to see whether a relationship existed. We focused specifically on the Chicago White Sox by using their public records and data from 2001 to the present.$^1$. The White Sox stadium is Guaranteed Rate Field, which is right on the dividing line of community areas 34 (Armour Square) and 60 (Bridgeport). This project focused on the crimes that occurred in these community areas in an effort to identify the impact of game events on the frequency of reported incidents."
+keywords: Class file; \LaTeX; Statist. Med.; Rmarkdown;
+bibliography: bibfile.bib
+output: rticles::sim_article
+---
+
+
+
+Parker Franzen, Renhao Sun, Luis Treviño
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+<br />  
+
+
+# Introduction
+
+  Introduction paragraph: The city of Chicago keeps an extensive public record of all reported incidents of crime from 2001 to the present.$^2$ At the time of analysis for this project this data set contained a total of approximately 7.42 million rows (each row is an incident of a reported crime) and 22 columns. The main interest of this project is to analyze this crime data set along with the incidence of baseball sporting events in the corresponding community areas of Chicago in an effort to see whether a relationship existed among the variables. We specifically looked at the major league baseball team the Chicago White Sox by using their public records of baseball home games from 2001 to the present.$^1$ The Chicago White Sox stadium is located at Guaranteed Rate Field, which is right on the dividing line of community areas 34 (Armour Square) and 60 (Bridgeport). This project focused on the crimes that occurred in these community areas as well as surrounding areas in an effort to see whether or not “game days” (that is, days where there was a formal baseball game in the stadium with a live attendance) had a significant impact on the frequency of reported incidents of crime in those areas.
+
+  R was used for data manipulation, including removing unnecessary rows and variables, creating new variables to use as predictors in the analysis, merging data of crimes and games into one data set, and more. Web scrapping techniques with R were used in acquiring the data on the dates and times of Chicago White Sox home games.
+
+# Data Structure
+
+To begin the data manipulation, all Chicago White Sox games were web scraped from baseball-reference.com. We then deleted all away games from the web scraped data, keeping only home games. The Chicago crimes data set was imported into R for data manipulation. The baseball stadium is shared by community areas 34 and 60, which were grouped together and coded as “1 - inside area.“ Then the surrounding community areas (28, 31, 33, 35, 37, 38, 59, and 61), not immediately associated with the stadium, were coded as “0 - outside area.” All observations that were not associated with these 10 community areas were not included for further analysis. Over half of the variables in the original data set (e.g. Case.Number, IUCR, FBI.Code, etc., ) were also not included as they had no direct relation to our specific topic. It was also necessary to create a “Date-Time” variable formatted as "%Y-%m-%d %H:%M:%S". This was needed for; coding a new day/night variable;  aggregating the frequency of crime incident reports according to date (this is the response variable); and joining the crimes and games data sets into one. Other variables that were created included; “Game.Day” -- coded “1-date is a game day” and “0-date is not a game day; “Weekday”-- coded “1-date is on days Monday-Friday” and “0-date is on a weekend day Saturday or Sunday”; and “DayNight” -- coded “1-event occurred in the day time” and “0-event occurred in the night time.” A final completed data set resulted in the end which we were able to run an analysis on and explore the impact of these different factors on the incidence of crime in the mentioned areas. 
+
+* `Count`: number of crimes
+
+* `Game`: (1 = game that day, 0 = no game that day)
+
+* `Weekday`: (1 = Weekday (Monday - Friday), 0 = Weekend (Saturday and Sunday))
+
+* `DayNight`: (time the crime occurred, 1 = Day (6 am- 6 pm), 0 = Night (6:01 pm - 5:59 am))
+
+* `Area`: (1 = Community.area (60, 34), 0 =
+Community.area(37,61,59,31,28,33,35,38))
+
+# Methods
+Figure 2 shows the box plots of the number of crimes for DayNight,
+Weekday, and Game.
+Clearly, there is more crime during the day (than
+night) in the south side of Chicago. Also, the amount of crime slightly
+increases during game days. It is interesting that there is not much
+difference in the weekday variable.
+
+####Boxplots
+
+Figure 3 is the time series of crime frequency by area: target area (34, 60),
+east (33,35), west (59, 61), south (37, 38) and north (28, 31). The west area
+has more crime in general and the target area the least. In addition, the
+general trend decreases as time increases, which implies that crime
+frequency also decreases.
+
+####figure 3
+
+Our group conducted a Poisson regression model to assess the effect of the
+predictor variables on the crime frequency in Chicago’s south side
+(response variable). We chose this model over a regular regression model
+because our response variable is a counted integer number (rather a
+continuous number): $log()$
+, where is the response
+variable and are the regression coefficients. An interaction term
+between “Game” and each other variable is also included in the model.
+
+# Results
+
+The following is the results generated by the Poisson regression model. As
+the results indicated, all predictors and the interaction term are significant
+based on the p-value:
+
+####figure 4
+
+Where the regression coefficients are positive, crime would increase
+because of the impact of the corresponding variable. Where they are
+negative, crime would decrease. For the interaction terms, positive
+coefficients imply that crime increases as a result of the variable
+interaction, whereas negative values indicate that their interaction actually
+results in less crime.
+
+
+# Conclusion
+
+We set out to explore the potential connections between the occurrence of crimes and baseball sporting events in the nearby Chicago community areas. After importing our data into R and making all necessary manipulations we were ultimately able to establish that the variables that we analyzed in our final regression model (predictor variables--Weekday, Gameday, DayNight, and their interaction effects) did have a significant impact on the frequency of crime occurrences (response variable) on a given day in the immediate surrounding areas to the White Sox baseball stadium. This implies that on days where there are formal baseball games there is a rise in crime in community areas 34 and 60. Also, crimes have a higher tendency of occuring during day-time games. Games that occur during weekdays (Monday-Friday) have a more significant impact on the frequency of crime than weekends (Saturday-Sunday).
+
+
+# References
+
+1. Baseball Reference. “Chicago White Sox Team History &
+Encyclopedia”. (2021, September 27). Retrieved from
+https://www.baseball-reference.com/teams/CHW/
+
+2. City of Chicago. “Crimes - 2001 to Present”. (2021, October 13).
+Retrieved from https://data.cityofchicago.org/Public-Safety/Crimes-
+2001-to-Present/ijzp-q8t2
+Spatial-Time Baseball Sporting Events Effect on Number of Crimes in Chicago’s
+
